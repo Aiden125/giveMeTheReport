@@ -1,5 +1,5 @@
 const { Configuration, OpenAIApi } = require("openai");
-const apiKey = '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';
+const apiKey = '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';
 const express = require('express')
 const cors = require('cors');
 const app = express();
@@ -22,7 +22,7 @@ app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 // POST method route
-app.get('/moon', async function (req, res) {
+app.post('/moon', async function (req, res) {
         const completion = await openai.createChatCompletion({
             model: "gpt-3.5-turbo",
             max_tokens: 100,
@@ -36,7 +36,7 @@ app.get('/moon', async function (req, res) {
         });
         let fortune = completion.data.choices[0].message['content'];
         console.log(fortune);
-        res.send(fortune);
+        res.send({"assistant" : fortune});
 });
 
 app.listen(3000)
