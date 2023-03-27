@@ -150,11 +150,13 @@
             <button id="btn" onclick="spinner()">Send</button>
         </div>
     </div>
+    
+    <!-- 카카오 광고 -->
     <div class="kakao-ad">
-        <ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-KbdwsZ8O86UWMOWU" data-ad-width="320"
-            data-ad-height="100"></ins>
+        <ins class="kakao_ad_area" style="display:none;" data-ad-unit = "DAN-ZjgeXFw8qe9SP63y" data-ad-width = "320" data-ad-height = "100"></ins>
         <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
     </div>
+    
     <script>
         const chatBox = document.querySelector('.chat-box');
         let userMessages = [];
@@ -192,7 +194,7 @@
 
             chatInput.value = '';
 
-            const response = await fetch('https://ogfn46csobwml7y4ppydobbfu40jqlyp.lambda-url.ap-northeast-2.on.aws/moon', {
+            const response = await fetch('https://uz6qrmp3fd.execute-api.ap-northeast-2.amazonaws.com/prod3/moon', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -208,21 +210,21 @@
             document.getElementById('loader').style.display = "none";
 
             //assistantMessage 메세지 추가
-            assistantMessages.push(data.assistant);
+            // assistantMessages.push(data.assistant);
 
-            const astrologerMessage = document.createElement('div');
-            astrologerMessage.classList.add('chat-message');
-            astrologerMessage.innerHTML = `<p class='assistant'>${data.assistant}</p>`;
-            const p = document.createElement('p');
-            p.innerHTML = '추가로 링크를 눌러 작은 정성 배풀어주시면 더욱 좋은 운이 있으실겁니다. => ';
-            p.classList.add("assistant");
-            const link = document.createElement('a');
-            link.href = 'https://toss.me/jocoding';
-            link.innerHTML = '복채 보내기';
-            p.appendChild(link);
-            astrologerMessage.appendChild(p);
-            "<p> <a href='https://toss.me/jocoding'>복채 보내기</a></p>";
-            chatBox.appendChild(astrologerMessage);
+            // const astrologerMessage = document.createElement('div');
+            // astrologerMessage.classList.add('chat-message');
+            // astrologerMessage.innerHTML = `<p class='assistant'>${data.assistant}</p>`;
+            // const p = document.createElement('p');
+            // p.innerHTML = '추가로 링크를 눌러 작은 정성 배풀어주시면 더욱 좋은 운이 있으실겁니다. => ';
+            // p.classList.add("assistant");
+            // const link = document.createElement('a');
+            // link.href = 'https://toss.me/jocoding';
+            // link.innerHTML = '복채 보내기';
+            // p.appendChild(link);
+            // astrologerMessage.appendChild(p);
+            // "<p> <a href='https://toss.me/jocoding'>복채 보내기</a></p>";
+            // chatBox.appendChild(astrologerMessage);
         };
 
         document.querySelector('.chat-input button').addEventListener('click', sendMessage);
